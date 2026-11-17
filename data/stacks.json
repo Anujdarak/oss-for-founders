@@ -1,0 +1,83 @@
+[
+  {
+    "slug": "open-source-saas-starter",
+    "title": "Open-source SaaS starter",
+    "summary": "One pick per layer for a product you intend to run yourself, chosen so the whole set can sit on a single server if it has to.",
+    "items": [
+      {
+        "repo": "supabase/supabase",
+        "role": "Backend and database",
+        "note": "Postgres with auth, storage, and generated APIs on top, so the first version does not need a bespoke backend."
+      },
+      {
+        "repo": "nextauthjs/next-auth",
+        "role": "Auth",
+        "note": "Worth taking even alongside a backend that offers auth, if the app is already a Next.js app and you want sessions handled in it."
+      },
+      {
+        "repo": "shadcn-ui/ui",
+        "role": "Frontend components",
+        "note": "Copied into the repo rather than installed, so the component code stays yours to change."
+      },
+      {
+        "repo": "plausible/analytics",
+        "role": "Analytics",
+        "note": "Cookie-free, which keeps the consent-banner work off the backlog."
+      },
+      {
+        "repo": "coollabsio/coolify",
+        "role": "Deployment",
+        "note": "Gives you a Heroku-shaped workflow on a server you rent, which is the usual reason this list exists."
+      }
+    ]
+  },
+  {
+    "slug": "self-hosted-support-desk",
+    "title": "Self-hosted support desk",
+    "summary": "Talking to customers without a per-seat subscription. Pick one of the first three rather than all of them.",
+    "items": [
+      {
+        "repo": "chatwoot/chatwoot",
+        "role": "Shared inbox and live chat",
+        "note": "The broadest of the three: live chat widget plus email and social channels in one inbox."
+      },
+      {
+        "repo": "zammad/zammad",
+        "role": "Ticketing",
+        "note": "Closer to a classic help desk, with stronger ticket workflow than chat."
+      },
+      {
+        "repo": "freescout-help-desk/freescout",
+        "role": "Lightweight shared inbox",
+        "note": "Runs on ordinary PHP hosting, which makes it the cheapest of the three to keep alive."
+      },
+      {
+        "repo": "knadh/listmonk",
+        "role": "Outbound email",
+        "note": "For the announcements and onboarding sequences a support tool does not cover."
+      }
+    ]
+  },
+  {
+    "slug": "product-data-stack",
+    "title": "Product data stack",
+    "summary": "Knowing what users do, and being able to ask questions the dashboard did not anticipate.",
+    "items": [
+      {
+        "repo": "umami-software/umami",
+        "role": "Web analytics",
+        "note": "Lighter than Plausible to run: one database rather than two."
+      },
+      {
+        "repo": "metabase/metabase",
+        "role": "Business intelligence",
+        "note": "Points at the database you already have and gives non-engineers a way to ask it questions."
+      },
+      {
+        "repo": "ClickHouse/ClickHouse",
+        "role": "Analytical database",
+        "note": "Only worth adding once event volume makes queries against the app database slow. Not a day-one component."
+      }
+    ]
+  }
+]

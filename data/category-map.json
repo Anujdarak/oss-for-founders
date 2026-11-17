@@ -1,0 +1,304 @@
+{
+  "$comment": "Drives scripts/discover.ts. `topics` are searched as topic: qualifiers, `keywords` as quoted free text. Each term is run across four star ranges and, when a query would exceed the search index's 1,000-result cap, across pushed-date windows as well. No payments or billing category by design.",
+  "categories": {
+    "ai-ml": {
+      "topics": [
+        "llm", "llmops", "rag", "vector-database", "vector-search", "ai-agents",
+        "embeddings", "inference-engine", "machine-learning", "generative-ai",
+        "openai", "chatbot", "prompt-engineering", "semantic-search"
+      ],
+      "keywords": [
+        "llm gateway", "self-hosted llm", "model serving", "vector search engine",
+        "prompt management", "ai agent platform", "retrieval augmented generation",
+        "open source alternative to chatgpt", "llm observability"
+      ]
+    },
+    "saas-development": {
+      "topics": [
+        "backend-as-a-service", "baas", "headless-cms", "admin-dashboard",
+        "admin-panel", "multi-tenancy", "low-code", "no-code", "internal-tools",
+        "api-gateway", "serverless", "webhooks", "feature-flags", "saas"
+      ],
+      "keywords": [
+        "admin panel generator", "internal tools builder", "multi tenant saas",
+        "backend framework", "headless cms", "open source firebase alternative",
+        "app builder", "api management", "feature flag service"
+      ]
+    },
+    "auth-security": {
+      "topics": [
+        "authentication", "authorization", "oauth2", "oidc", "sso", "saml",
+        "identity-provider", "secrets-management", "iam", "passwordless",
+        "two-factor-authentication", "zero-trust", "vault", "rbac"
+      ],
+      "keywords": [
+        "single sign on", "secret manager", "passwordless authentication",
+        "identity and access management", "open source auth0 alternative",
+        "user management", "api authentication", "secrets scanning",
+        "certificate management"
+      ]
+    },
+    "marketing-seo": {
+      "topics": [
+        "email-marketing", "newsletter", "marketing-automation", "seo",
+        "landing-page", "ab-testing", "transactional-email", "social-media",
+        "growth-hacking", "referral", "cms", "blogging", "affiliate", "mailing-list"
+      ],
+      "keywords": [
+        "self hosted newsletter", "seo audit tool", "email campaign manager",
+        "waitlist landing page", "open source mailchimp alternative",
+        "marketing automation platform", "link shortener", "social media scheduler",
+        "sitemap generator"
+      ]
+    },
+    "crm-sales": {
+      "topics": [
+        "crm", "customer-relationship-management", "sales", "sales-automation",
+        "lead-management", "lead-generation", "contact-management", "pipeline",
+        "deals", "b2b", "customer-data-platform", "quotes"
+      ],
+      "keywords": [
+        "open source crm", "sales pipeline tracker", "lead capture",
+        "deal management", "open source salesforce alternative",
+        "contact database", "sales engagement", "customer data platform",
+        "proposal software"
+      ]
+    },
+    "analytics-bi": {
+      "topics": [
+        "analytics", "web-analytics", "product-analytics", "business-intelligence",
+        "data-visualization", "dashboard", "session-replay", "metrics",
+        "event-tracking", "data-warehouse", "reporting", "olap", "funnel-analysis",
+        "ab-testing"
+      ],
+      "keywords": [
+        "privacy friendly analytics", "bi dashboard", "event tracking",
+        "sql notebook", "funnel analysis", "open source google analytics alternative",
+        "cookieless analytics", "data exploration", "embedded analytics"
+      ]
+    },
+    "infrastructure-devops": {
+      "topics": [
+        "devops", "self-hosted", "paas", "kubernetes", "docker", "ci-cd",
+        "observability", "monitoring", "reverse-proxy", "infrastructure-as-code",
+        "logging", "uptime-monitoring", "container", "deployment", "backup"
+      ],
+      "keywords": [
+        "self hosted paas", "deployment platform", "log aggregation",
+        "uptime monitoring", "container management", "open source heroku alternative",
+        "status page", "secrets in ci", "server management panel",
+        "application performance monitoring"
+      ]
+    },
+    "ecommerce": {
+      "topics": [
+        "ecommerce", "e-commerce", "storefront", "headless-commerce",
+        "shopping-cart", "inventory-management", "point-of-sale", "marketplace",
+        "catalog", "orders", "shop", "retail", "dropshipping"
+      ],
+      "keywords": [
+        "open source storefront", "headless commerce", "online store platform",
+        "product catalog", "open source shopify alternative",
+        "inventory management system", "order management", "subscription commerce",
+        "digital downloads"
+      ]
+    },
+    "customer-support": {
+      "topics": [
+        "helpdesk", "customer-support", "live-chat", "ticketing-system",
+        "shared-inbox", "knowledge-base", "chatbot", "feedback", "support",
+        "customer-service", "faq", "canned-responses", "omnichannel"
+      ],
+      "keywords": [
+        "help desk software", "support ticketing", "live chat widget",
+        "customer feedback board", "open source intercom alternative",
+        "open source zendesk alternative", "shared team inbox", "status page",
+        "customer onboarding"
+      ]
+    },
+    "productivity-automation": {
+      "topics": [
+        "workflow-automation", "automation", "task-management",
+        "project-management", "scheduling", "note-taking", "calendar", "etl",
+        "kanban", "collaboration", "time-tracking", "document-management",
+        "esignature", "wiki", "integration"
+      ],
+      "keywords": [
+        "workflow automation platform", "self hosted scheduling", "kanban board",
+        "document collaboration", "open source zapier alternative",
+        "open source notion alternative", "time tracking app", "meeting scheduler",
+        "electronic signature", "team wiki"
+      ]
+    },
+    "design-ui": {
+      "topics": [
+        "ui-components", "design-system", "component-library", "css-framework",
+        "design-tokens", "icons", "tailwindcss", "charts", "data-visualization",
+        "ui-kit", "design-tools", "prototyping", "whiteboard", "diagrams"
+      ],
+      "keywords": [
+        "react component library", "design system toolkit", "ui kit", "icon set",
+        "chart library", "open source figma alternative", "diagram editor",
+        "whiteboard app", "page builder"
+      ]
+    },
+    "databases": {
+      "topics": [
+        "database", "sql", "nosql", "postgresql", "mysql", "time-series-database",
+        "orm", "key-value-store", "search-engine", "database-migrations",
+        "graph-database", "embedded-database", "data-sync", "database-tools",
+        "object-storage"
+      ],
+      "keywords": [
+        "embedded database", "time series database", "database migration tool",
+        "full text search engine", "database gui", "open source airtable alternative",
+        "database backup tool", "sql editor", "object storage server"
+      ]
+    },
+    "developer-tools": {
+      "topics": [
+        "developer-tools", "cli", "rest-client", "testing", "error-tracking",
+        "code-review", "documentation", "debugging", "static-analysis",
+        "api-documentation", "load-testing", "git", "code-quality",
+        "dependency-management", "terminal"
+      ],
+      "keywords": [
+        "postman alternative", "error tracking", "feature flags",
+        "documentation generator", "load testing tool", "open source sentry alternative",
+        "api mocking", "code review tool", "git server", "changelog generator"
+      ]
+    }
+  },
+  "exclude": {
+    "$comment": "Matched case-insensitively against the repo name, then the description. These remove collections, teaching material, and vendor SDKs -- none of which are tools a founder can run. The SDK rules were added after a test import filled developer-tools with language bindings for third-party APIs (notion-sdk-py, octokit.net, nba_api).",
+    "nameFragments": [
+      "awesome-",
+      "-awesome",
+      "sdk",
+      "api-client",
+      "client-library",
+      "api-wrapper",
+      "bindings",
+      "helm-chart",
+      "ansible-role",
+      "cheatsheet",
+      "cheat-sheet",
+      "interview",
+      "leetcode",
+      "dotfiles",
+      "roadmap",
+      "tutorial",
+      "course",
+      "bootcamp",
+      "exercises",
+      "koans",
+      "playground",
+      "sandbox",
+      "boilerplate",
+      "starter-kit",
+      "starter-template",
+      "template",
+      "example",
+      "demo",
+      "sample",
+      "clone",
+      "-notes",
+      "books",
+      "papers",
+      "resources",
+      "collection",
+      "showcase",
+      "portfolio",
+      "blog",
+      "homepage",
+      "my-"
+    ],
+    "descriptionFragments": [
+      "awesome list",
+      "curated list",
+      "a list of",
+      "list of awesome",
+      "collection of",
+      "learning path",
+      "study guide",
+      "interview questions",
+      "interview preparation",
+      "coding challenge",
+      "tutorial series",
+      "free course",
+      "learn ",
+      "cheat sheet",
+      "my personal",
+      "personal website",
+      "personal blog",
+      "portfolio website",
+      "dotfiles",
+      "boilerplate",
+      "starter template",
+      "project template",
+      "example project",
+      "demo app",
+      "sample app",
+      "clone of",
+      "for learning",
+      "practice project",
+      "book about",
+      "ebook",
+      "client library",
+      "api client library",
+      "sdk for",
+      "php sdk",
+      "python sdk",
+      "javascript sdk",
+      "api wrapper",
+      "wrapper for",
+      "wrapper around",
+      "bindings for",
+      "unofficial api",
+      "api bindings",
+      "openapi generator for",
+      "a library for",
+      "library for interacting",
+      "library to interact"
+    ],
+    "topics": [
+      "awesome",
+      "awesome-list",
+      "awesome-lists",
+      "interview-questions",
+      "interview-preparation",
+      "coding-interviews",
+      "leetcode",
+      "leetcode-solutions",
+      "dotfiles",
+      "tutorial",
+      "tutorials",
+      "course",
+      "courses",
+      "learning",
+      "study",
+      "education",
+      "roadmap",
+      "cheatsheet",
+      "boilerplate",
+      "starter",
+      "starter-kit",
+      "template",
+      "templates",
+      "example",
+      "examples",
+      "demo",
+      "books",
+      "ebook",
+      "resources",
+      "curated-list",
+      "portfolio",
+      "personal-website",
+      "blog-theme",
+      "sdk",
+      "api-wrapper",
+      "api-bindings",
+      "client-library"
+    ]
+  }
+}

@@ -1,0 +1,77 @@
+name: Discover repos
+
+on:
+  schedule:
+    # Mondays at 04:17 UTC. Off the hour so it does not pile onto the
+    # top-of-hour rush on GitHub's shared runners.
+    - cron: "17 4 * * 1"
+  workflow_dispatch:
+    inputs:
+      test:
+        description: "Test run (20 repos per category)"
+        type: boolean
+        default: false
+
+# Needed to push the branch and open the PR.
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: discover
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    # Date windows plus a README check per candidate make this a long job.
+    timeout-minutes: 300
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Refresh stats for curated repos
+        env:
+          # The default GITHUB_TOKEN is enough: this only reads public data.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run refresh-stats -- --force
+
+      - name: Run discovery
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "${{ inputs.test }}" = "true" ]; then
+            npm run discover -- --test
+          else
+            npm run discover
+          fi
+
+      - name: Validate the data
+        run: npm run validate
+
+      - name: Build
+        run: npm run build
+
+      - name: Open a pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: automated/discover
+          # The run is a proposal, not a deploy: a human reads the report and
+          # the diff before any of it reaches the site.
+          title: "Automated discovery run"
+          commit-message: "Automated discovery run"
+          body-path: data/discover-report.md
+          labels: automated, data
+          add-paths: |
+            data/discovered.json
+            data/repos.json
+            data/github-cache.json
+            data/discover-report.md
+            data/stats-report.md
